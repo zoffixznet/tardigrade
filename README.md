@@ -2,7 +2,7 @@
 
 # NAME
 
-Tardigrade - Perl 6 Web Framework That Can Survive In Space
+Tardigrade - Perl 6 Web Framework That Can Survive In Space! 🐛🚀
 
 # SYNOPSIS
 
