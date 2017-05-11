@@ -1,0 +1,19 @@
+{
+    "perl"         : "6.c",
+    "name"         : "Tardigrade",
+    "license"      : "Artistic-2.0",
+    "version"      : "0.001001",
+    "description"  : "Perl 6 Web Framework That Can Survive In Space",
+    "tags"         : [ "web", "www", "framework" ],
+    "depends"      : [ ],
+    "test-depends" : [
+        "Test",
+        "Test::META"
+    ],
+    "provides"     : {
+        "TG" : "lib/TG.pm6",
+        "TG::Server" : "lib/TG/Server.pm6",
+    },
+    "authors"       : ["Zoffix Znet"],
+    "support"       : {"source"   : "https://github.com/zoffixznet/tardigrade"}
+}
