@@ -8,8 +8,7 @@ Tardigrade - Perl 6 Web Framework That Can Survive In Space! 🐛🚀
 
 ```perl6
     use TG;
-
-    tg;
+    TG.new.get(any </foo /bar /ber>).start
 ```
 
 # DESCRIPTION
