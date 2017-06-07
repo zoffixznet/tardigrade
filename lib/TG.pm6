@@ -24,6 +24,6 @@ method start {
     HTTP::Server::Tiny.new(:$!host , :$!port).run: -> $env-raw {
         my $env = TG::Env.new: $env-raw;
         my $route = $!router.match: $env;
-        $route.code, $route.headers, $route.data
+        start [$route.code, $route.headers, $route.data]
     }
 }
