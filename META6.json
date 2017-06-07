@@ -13,7 +13,7 @@
     ],
     "provides"     : {
         "TG" : "lib/TG.pm6",
-        "TG::Server" : "lib/TG/Server.pm6",
+        "TG::Server" : "lib/TG/Server.pm6"
     },
     "authors"       : ["Zoffix Znet"],
     "support"       : {"source"   : "https://github.com/zoffixznet/tardigrade"}
