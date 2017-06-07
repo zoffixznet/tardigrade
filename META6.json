@@ -13,8 +13,11 @@
         "Test::META"
     ],
     "provides"     : {
-        "TG" : "lib/TG.pm6",
-        "TG::Server" : "lib/TG/Server.pm6"
+        "TG"         : "lib/TG.pm6",
+        "TG::Server" : "lib/TG/Server.pm6",
+        "TG::Env"    : "lib/TG/Env.pm6",
+        "TG::Route"  : "lib/TG/Route.pm6",
+        "TG::Router" : "lib/TG/Router.pm6",
     },
     "authors"       : ["Zoffix Znet"],
     "support"       : {"source"   : "https://github.com/zoffixznet/tardigrade"}
