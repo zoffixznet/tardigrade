@@ -1,5 +1,8 @@
-use TG::Env;
 unit class TG::Route;
+
+use IO::Path::ChildSecure;
+use TG::Env;
+
 subset RouteType of Str where any <get post>;
 
 has RouteType:D $.type  = 'get';
@@ -19,5 +22,5 @@ method headers {
 
 method data {
     use fatal;
-    'templates'.IO.child($!template).extension(:0parts, $!format).open;
+    'templates'.IO.&child-secure($!template).extension(:0parts, $!format).open;
 }

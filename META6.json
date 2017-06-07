@@ -8,6 +8,7 @@
     "depends"      : [ ],
     "test-depends" : [
         "HTTP::Server::Tiny",
+        "IO::Path::ChildSecure",
         "Test",
         "Test::META"
     ],
