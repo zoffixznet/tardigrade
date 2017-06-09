@@ -5,19 +5,26 @@ use TG::Env;
 use TG::Stash;
 use Template::Mojo;
 
-subset RouteType of Str where any <get post>;
+subset RouteType of Str:D where any <get post>;
 
-has RouteType:D $.type  = 'get';
-has Int:D       $.code  = 200;
-has Str:D       $.route is required;
-has Str:D       $.format   = 'html';
-has             &.before;
-has Template::Mojo:D $.template is required;
+has RouteType        $.type;
+has Int:D            $.code   is required;
+has Str:D            $.route  is required;
+has Str:D            $.format is required;
+has                  &.before;
+has Template::Mojo:D $.template  is required;
 
-submethod TWEAK (:$route, :$template) {
+submethod BUILD (
+    Str:D     :$!route!,
+    RouteType :$!type = 'get',
+    Int:D     :$!code = 200,
+              :$!format = 'html',
+              :&!before,
+    Str:D     :$template = $!route,
+) {
     $!template = Template::Mojo.new:
-      'templates'.IO.&child-secure($template || $route)
-          .extension(:0parts, $!format).slurp
+      'templates'.IO.&child-secure($template)
+          .extension(:0parts, $!format).slurp;
 }
 
 method ACCEPTS (TG::Route:D: TG::Env $env) {
@@ -30,6 +37,6 @@ method headers {
 
 method data {
     my $stash = TG::Stash.new;
-    &.before and (&c.count ?? &.before($stash) !! &.before());
-    [($t).render: $stash]
+    &!before and (&!before.count ?? &!before($stash) !! &!before());
+    [$!template.render: $stash]
 }
