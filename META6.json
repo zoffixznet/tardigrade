@@ -10,6 +10,7 @@
         "HTTP::Server::Tiny",
         "IO::Path::ChildSecure",
         "Test",
+        "Template::Mojo",
         "Test::META"
     ],
     "provides"     : {
@@ -17,7 +18,8 @@
         "TG::Server" : "lib/TG/Server.pm6",
         "TG::Env"    : "lib/TG/Env.pm6",
         "TG::Route"  : "lib/TG/Route.pm6",
-        "TG::Router" : "lib/TG/Router.pm6"
+        "TG::Router" : "lib/TG/Router.pm6",
+        "TG::Stash"  : "lib/TG/Stash.pm6"
     },
     "authors"       : ["Zoffix Znet"],
     "support"       : {"source"   : "https://github.com/zoffixznet/tardigrade"}

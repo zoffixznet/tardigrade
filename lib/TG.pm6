@@ -14,9 +14,12 @@ multi method get(Str $route) {
     $!router.add: TG::Route.new: :$route;
     self
 }
-
 multi method get(Pair (:key($route), :value($template))) {
     $!router.add: TG::Route.new: :$route, :$template;
+    self
+}
+multi method get(&before, Pair (:key($route), :value($template))) {
+    $!router.add: TG::Route.new: :$route, :$template, :&before;
     self
 }
 
