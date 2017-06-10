@@ -11,7 +11,8 @@
         "IO::Path::ChildSecure",
         "Test",
         "Template::Mojo",
-        "Test::META"
+        "Test::META",
+        "URI::Encode"
     ],
     "provides"     : {
         "TG"         : "lib/TG.pm6",

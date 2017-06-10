@@ -36,8 +36,14 @@ method headers {
     ['Content-type' => 'text/html' ]
 }
 
-method data {
+method data (TG::Route:D: TG::Env $env) {
     my $stash = TG::Stash.new;
-    &!before and (&!before.count ?? &!before($stash) !! &!before());
+    with &!before {
+        my $c = &!before.count;
+        $c ??
+            $c == 1 ?? &!before($stash)
+              !! &!before($stash, $env)
+          !! &!before()
+    }
     [$!template.render: $stash]
 }

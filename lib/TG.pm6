@@ -10,7 +10,7 @@ has Int $.port = 3333;
 has TG::Router:D       $!router = TG::Router.new;
 has HTTP::Server::Tiny $!server;
 
-multi method get(Str $route) {
+multi method get(Str:D $route) {
     $!router.add: TG::Route.new: :$route;
     self
 }
@@ -23,10 +23,15 @@ multi method get(&before, Pair (:key($route), :value($template))) {
     self
 }
 
+multi method get(&before, Str:D $route) {
+    $!router.add: TG::Route.new: :$route, :&before;
+    self
+}
+
 method start {
     HTTP::Server::Tiny.new(:$!host , :$!port).run: -> $env-raw {
         my $env = TG::Env.new: $env-raw;
         my $route = $!router.match: $env;
-        start [$route.code, $route.headers, $route.data]
+        start [$route.code, $route.headers, $route.data: $env]
     }
 }
