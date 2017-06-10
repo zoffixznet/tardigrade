@@ -22,9 +22,10 @@ submethod BUILD (
               :&!before,
     Str:D     :$template = $!route,
 ) {
-    $!template = Template::Mojo.new:
-      'templates'.IO.&child-secure($template)
-          .extension(:0parts, $!format).slurp;
+    my $t = 'templates'.IO.&child-secure($template)
+        .extension(:0parts, $!format);
+    $t.e or $t = 'templates'.IO.add('404.html');
+    $!template = Template::Mojo.new: $t.slurp;
 }
 
 method ACCEPTS (TG::Route:D: TG::Env $env) {
