@@ -5,14 +5,15 @@
     "version"      : "0.001001",
     "description"  : "Perl 6 Web Framework That Can Survive In Space",
     "tags"         : [ "web", "www", "framework" ],
-    "depends"      : [ ],
-    "test-depends" : [
+    "depends"      : [
         "HTTP::Server::Tiny",
         "IO::Path::ChildSecure",
-        "Test",
         "Template::Mojo",
-        "Test::META",
         "URI::Encode"
+    ],
+    "test-depends" : [
+        "Test",
+        "Test::META"
     ],
     "provides"     : {
         "TG"         : "lib/TG.pm6",
